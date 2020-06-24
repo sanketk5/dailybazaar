@@ -1,0 +1,10 @@
+{% extends "base.html" %} {% include 'navbar.html' %} {% load crispy_forms_tags %} {% block content %}
+
+<div class="container">
+    <form method="post" class="from-group">
+        {% csrf_token %} {{form|crispy}}
+        <p>Don't have an account ? <a href="/accounts/register">Create account</a></p>
+        <button type="submit" class="btn btn-success">LOGIN</button>
+    </form>
+</div>
+{% endblock %}

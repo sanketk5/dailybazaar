@@ -1,0 +1,81 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>User Registration</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
+    <!--This CSS file.-->
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+</head>
+{% include 'navbar.html' %}
+
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-3"></div>
+
+            <div class="col-lg-6">
+                <div id="ui">
+
+                    <form class="form-group" action="register" method="POST">
+                        {% csrf_token %}
+
+                        <label id="signin">Create Account</label><br>
+                        <hr>
+                        <label id="name">Name :</label>
+                        <input type="text" name="full_name" class="form-control" placeholder="Enter Your Full Name">
+
+                        <label id="email">Email :</label>
+                        <input type="email" name="email" class="form-control" placeholder="Enter Your Email...">
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label id="pwd1">Password :</label>
+                                <input type="password" name="pwd1" class="form-control"
+                                    placeholder="Enter your Password..">
+                            </div>
+
+                            <div class="col-lg-6">
+                                <label id="pwd2">Confirm Password :</label>
+                                <input type="password" name="pwd2" class="form-control"
+                                    placeholder="Enter your Password again..">
+                            </div>
+                        </div>
+                        <div class="form-check pt-3">
+                            <input type="checkbox" class="form-check-input" id="excheck">
+                            <label class="form-check-label" for="excheck">I agree terms and conditions</label>
+                        </div>
+
+                        <div id="btn-submit">
+                            <input type="submit" value="Submit" id="submit" class="btn btn-success btn-block">
+                        </div>
+                        <span id="lin">Already have account </span><a href="/profile/login" id="lgin">Log In</a>
+                    </form>
+                    <div>
+                        {% for message in messages %}
+                        <h3>{{ message }}</h3>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6"></div>
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

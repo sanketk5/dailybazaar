@@ -1,0 +1,20 @@
+Problem in smtp For sending email through django settings -
+Hey guys, just found what’s going on with those errors.
+
+The problem is that when you have activated the Google Authenticator Verification you also need to set up the 2-Step-Authentication in your gmail account.
+
+Therefore visit https://www.google.com/settings/security - when you have done so, just go back to this page and click the “App Password” - Settings.
+
+Select “Other (custom name)” and enter any name you like. Go ahead and copy the code and paste it to your projects settings.
+
+_____________________________________
+
+from product.models import *
+>>> import os
+>>> a=Order.objects.filter(user_id=1)
+>>> for i in range(0, len(a), 1):
+...     b=a[i]
+...     d=b.products.all()
+...     e=d[0]
+...     f=e.product.product_title
+...     f

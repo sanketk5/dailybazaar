@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>About Us </title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="format-detection" content="contact-no">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" rel="stylesheet">
+		<link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap-responsive.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+		<!-- Font awesome file -->
+		
+		<link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}">
+	</head>
+	{% include 'navbar.html' %}
+	<body>
+		<div class="container">
+			<div class="pt-2"></div>
+			<div class="card pt-1">
+				<div class="card-body body-content"  data-aos='fade-left'>
+					<h3 class="content text-center pb-3"  data-aos='fade-down'><u>About us</u></h3>
+					<ul class="pl-4">
+						<li style="font-size: 20px;"><b>Why Daily Bazaar ?</b></li>
+						<p class="pt-1 pl-1">Daily bazaar is the website in which you get best quality handpicked product right to your doorstep at a lowest price. <br>Currently we are focusing on fresh eggs but soon we will add more items for you.
+						<br>Currently in this COVID-19 pandemic our delievery network is for <em>Palazzio by spenta, Aditya Mill Compound, Andheri - Kurla Rd, Near Vaishali Hotel, Safed Pul, Saki Naka, Mumbai, Maharashtra 400072.</em></p>
+						<p class="pl-1"></p>
+						<li style="font-size: 20px;"><strong>Key features :-</strong></li>
+						<p>1. <ins>One</ins> day delievery.<br>2. Support digital payments <ins>UPI.</ins>
+						<br>3. Easy <ins>return</ins> and <ins>refund.</ins><br>4. Customer support <ins>24/7</ins>.</p>
+						<p><strong>Contact us - +91-8286710074</strong></p>
+					</ul>
+				</div>
+			</div>
+			<div class="pb-2"></div>
+			
+		</div>
+		
+		<!--Footer-->
+		<div class="footer">
+			<!--Footer content -->
+			<div class="inner-footer">
+				<!-- This is for comapny name and its info.  -->
+				<div class="footer-items">
+					<h1>Daily Bazaar</h1>
+					<p>Customer satisfaction is the first and last priority for us.
+					</p>
+				</div>
+				<!-- This is for menu in footer. -->
+				<div class="footer-items">
+					<h2>Quick links</h2>
+					<div class="border" id="bdr"></div>
+					<ul>
+						<a href="#"><li>Home</li></a>
+						<a href="#"><li>Products</li></a>
+						<a href="#"><li>About</li></a>
+						<a href="#"><li>Contact us</li></a>
+					</ul>
+				</div>
+				
+				<!-- This is for contact us info. -->
+				<div class="footer-items">
+					<h2>Contact us</h2>
+					<div class="border"></div>
+					<ul>
+						<li><i class="fa fa-map-marker" aria-hidden='true'></i>Safed Pul, Mumbai-400072</li>
+						<li><i class="fa fa-phone" aria-hidden='true'></i><a href="tel:+91-8286710074">+91-8286710074</a></li>
+						<li><i class="fa fa-envelope" aria-hidden='true'></i><a href="mailto:sanket@gmail.com">sanket@gmail.com</a></li>
+					</ul>
+					
+				</div>
+			</div>
+			<div class="footer-bottom">
+				Daily bazaar.com
+			</div>
+		</div>
+		
+		<!--Footer-->
+		<!--Font awesome file for fonts-->
+		
+		<!--Scrolling animation JS-->
+		<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+		<script>
+		AOS.init({
+		offset: 500,
+		duration: 900,
+		once: true
+		});
+		</script>
+	</body>
+</html>

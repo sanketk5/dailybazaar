@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+ {% block content %}
+<div class="table-responsive text-nowrap">
+    <h2 class="pt-2 ml-3">Order Summary</h2><br>
+    <table class="table" id="t1">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Product Title</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+                <th scope="col">Delievery Charges</th>
+                <th scope="col">Total Cart Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order_product in object.products.all %}
+            <tr>
+                <!--Number-->
+                <td scope="row">{{ forloop.counter }}</td>
+                <!--Product Name-->
+                <td>{{ order_product.product.product_title }}</td>
+                <!--Product Quantity-->
+                <td>
+                    <a style="color: black;"
+                        href="{% url 'products:remove-single-item-from-cart' order_product.product.slug %}"><i
+                            class="fa fa-minus mr-2"></i></a> {{ order_product.product_quantity }}
+                    <a style="color: black;" href="{% url 'products:add-item-to-cart' order_product.product.slug %}"><i
+                            class="fa fa-plus ml-2"></i></a>
+                </td>
+                <!--Product Price-->
+                <td>
+                    {% if order_product.product.product_discount_price %} &#8377
+                    {{ order_product.product.product_discount_price }} {% else %} &#8377
+                    {{ order_product.product.product_price }} {% endif %}
+                </td>
+
+                <!--Product Delievery Charges-->
+                <td>&#8377 {{ order_product.get_delievery_charges }}</td>
+
+                <!--Product Total Price-->
+                <td>
+                    {% if order_product.product.product_discount_price %} &#8377
+                    {{ order_product.get_pro_discount_price }}
+                    <span class="badge badge-primary">
+                        Saving &#8377 {{order_product.get_amount_saved}}
+                    </span> {% else %} &#8377 {{ order_product.get_pro_price }} {% endif %}
+                    <a href="{% url 'products:remove-from-cart' order_product.product.slug %}"><i style="color: red;"
+                            class="fa fa-trash float-right"></i></a>
+
+                    <br><br>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">Your cart is empty.</td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    <a href="/home" class="btn btn-primary float-right">Continue Shopping</a>
+                </td>
+            </tr>
+            {% endfor %} {% if object.get_total %}
+            <tr>
+                <td colspan="5"><b>Total delievery charges :</b></td>
+                <td><b>&#8377 {{ object.get_total_delievery_charges }}</b></td>
+            </tr>
+            <tr>
+                <td colspan="5"><b>Order Total :</b></td>
+                <td><b>&#8377 {{ object.get_total }}</b></td>
+            </tr>
+            <tr>
+                <td colspan="5"><b>Total products :</b></td>
+                <td><b>{{ object.get_total_quantity }}</b></td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <a href="{% url 'products:checkout' %}" class="btn btn-warning float-right ml-2">Proceed To
+                        Checkout</a>
+                    <a href="{% url 'products:home' %}" class="btn btn-primary float-right">Continue Shopping</a>
+                </td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

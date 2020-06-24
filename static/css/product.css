@@ -1,0 +1,96 @@
+.product{
+    position: absolute;
+    left: 1cm;
+    top: 1cm;
+    width: 300px;
+    height: 300px;    
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .2);
+    border-radius: 15px;
+    background: #fff;
+    overflow: hidden;
+}
+.product .imgbox{
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.product .imgbox img{
+    display: block;
+    width: 80%;
+    margin: 10px auto 0;
+    transition: all 1.5s ease;
+}
+.product .btns #cart-btn{
+    margin-top: 15px;
+    margin-bottom: 8px;
+    margin-right: 10px;
+    z-index: 1;    
+}
+.product .btns #bn-btn{
+    margin-top: 15px;
+    margin-bottom: 8px;
+    margin-left: 24px;
+}
+/* This is for to take product name inside  in card (.specifice) */
+.specifice{
+    background: #fff;
+    width: 100%;
+    position: absolute;
+    bottom: -6px;
+    padding: 10px;
+    padding-left: 30px;
+    box-sizing: border-box;
+    transition: .5s;
+}
+/* Card la different effect denya sathi.(.product:hover .specifice) 
+.product:hover .specifice{
+    bottom: 0;
+}*/
+.specifice h2{
+    font-size: 20px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 15px;
+}
+.specifice span{
+    font-size: 15px;
+    color: #ccc;
+    font-weight: normal;
+    padding: 0;
+}
+/* This is to take price in right place (.specifice .price)*/
+.specifice .price{
+    position: absolute;
+    top: 7px;
+    right: 25px;
+    font-weight: bold;
+    color: #000;
+    font-size: 20px;
+}
+/* This is for quantity value in card*/
+.specifice .box{
+    position: absolute;
+    top: 35px;
+    right: 25px;
+    padding-bottom: 15px;
+    padding-top: 10px;
+}
+#cart-btn{
+    padding-right: 20px;
+}
+/*This is end of quantity btn.*/
+.imgbox{
+    overflow: hidden;
+}
+.imgbox img{
+    transition: all 1.5s ease;
+}
+.product .imgbox:hover img{
+    transform: scale(1.3);
+}
+@media screen and (max-width: 600px){
+	.product{
+		width: 100px;
+	}
+}

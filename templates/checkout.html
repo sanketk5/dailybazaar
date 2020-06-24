@@ -1,0 +1,93 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block content %}
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-8 mb-4">
+
+
+            <h2 class="my-3 h2 text-center">Checkout Form</h2>
+            <div class="card">
+                <form method="POST" class="card-body">
+                    {% csrf_token %}
+                    <div class="hideable_shipping_form">
+                        <h3>Delievery Address</h3>
+
+
+                        <h5><b>Note : </b>Our delievery is now only available for palazzio building.</h5>
+
+                        <div class="md-form mb-2">
+                            <label for="room_no" class="ml-2">Room No :-</label> {{ form.room_no }}
+                        </div>
+
+                        <div class="md-form">
+                            <label for="wing_name" class="ml-2">Wing Name :-</label> {{ form.wing_name }}
+                        </div>
+                    </div>
+
+                    <p class="mt-2">Palazzio by Spenta, Aditya Mill Compound, Andheri - Kurla Road, Near Vaishali Hotel,
+                        Safed Pul, Sakinaka, Mumbai, Maharashtra - 400072</p>
+                    <hr class="mb-4">
+
+                    <div class="custom-control custom-checkbox">
+                        <input {% if form.save_info.value %}checked{% endif %} type="checkbox"
+                            class="custom-control-input" id="save-info" name="save-info">
+                        <label for="save-info" class="custom-control-label">Save this info for next time.</label>
+                    </div>
+
+                    <hr class="mb-3">
+                    <h4 class="mb-2">Payment</h4>
+                    <div class="d-block my-3">
+
+                        {% for value,name in form.fields.payment_option.choices %}
+                        <div class="custom-control custom-radio">
+                            <input type="radio" name="payment_option" id="{{ name }}" value="{{ value }}"
+                                class="custom-control-input" required>
+                            <label for="{{ name }}" class="custom-control-label">{{ name }}</label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <hr class="mb-4">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block mt-4">Payment</button>
+                </form>
+
+            </div>
+        </div>
+
+        <div class="col-lg-3 mt-2">
+            <h4 class="d-flex justify-content-between align-content-center mb-3">
+                <span class="text-muted mt-4">Your Cart</span>
+                <span class="badge badge-primary badge-primary mt-4">{{ order.products.count }}</span>
+            </h4>
+            <ul class="list-group mb-3">
+                {% for order_item in order.products.all %}
+                <li class="list-group-item d-flex justify-content-between lh-condenced">
+                    <div>
+                        <h6 class="my-0">{{ order_item.product.product_title }}</h6>
+                        <small class="text-muted">Quantity :- {{ order_item.get_total_quantity }}</small>
+                    </div>
+
+                    {% if order_item.product.product_discount_price %}
+                    <span class="text-muted"></span>&#8377 {{ order_item.get_total_cart_discount_price }}</span>
+                    {% else %}
+                    <span class="text-muted"></span>&#8377 {{ order_item.get_total_cart_price }}</span>
+                    {% endif %}
+                </li>
+                {% endfor %}
+
+                <li class="list-group-item d-flex justify-content-between lh-condenced">
+                    <div>
+                        <h6 class="my-0">Total :</h6>
+                        <small class="text-muted"></small>
+                    </div>
+                    <span class="text-bold">&#8377 {{ order.get_total }}</span>
+                </li>
+            </ul>
+
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

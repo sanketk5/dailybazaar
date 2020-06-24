@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapse_target">
+        <a class="navbar-brand col-sm-2" href="/home">Daily Bazaar</a>
+        <ul class="navbar-nav">
+            <li class="home col-sm-4" id="home-tag"><a href="/home" class="nav-link">Home</a></li>            
+            <li class="nav-about col-sm-4 "><a href="/about" class="nav-link">About</a></li>
+            {% if user.is_authenticated %}
+            <li class="nav-item dropdown col-sm-6">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="dropdown_target">
+                    {{ user.first_name }}
+                    <span class="caret"></span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdown_target">
+                    <ul class="navbar-nav">
+                        <a href="/my-orders" class="dropdown-item">My Orders</a>
+                        <div class="dropdown-divider"></div>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <a href="/profile/logout/" class="dropdown-item">Logout</a>
+                        <div class="dropdown-divider"></div>
+                    </ul>
+                </div>
+            </li>
+            <li class="my-cart col-sm-1" id="my-cart" style="font-size: 27px">
+                <a href="{% url 'products:order-summary' %}"><i class="fas fa-shopping-cart"
+                        style="color:#0689F7"></i></a></li>
+            {% else %}
+            <li class="nav-login col-sm-6"><a href="/profile/login/" class="nav-link">Login</a></li>
+            {% endif %}
+
+        </ul>
+    </div>
+</nav>
+<div class="pt-3">
+    {% if messages %} {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
+        {{ message }}
+        <button class="close" type="button" data-dismiss="alert" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %} {% endif %}
+</div>

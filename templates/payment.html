@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container wow fadeIn">
+  <div class="row">
+
+    <div class="col-md-12 mb-4">
+
+      <h2 class="my-4 h2 text-center">Payment</h2>
+      <div class="card">
+
+        <form method="POST" class="card-body m-auto">
+
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-8 mb-4">
+              <h4>Steps for UPI payment </h4>
+              <dl>
+                <dt class="mt-4">Step 1:</dt>
+                <dd>Open or Go to any web or mobile application which supports UPI transaction.</dd>
+                <dt>Step 2:</dt>
+                <dd>Enter payee(company) number - +918286710074 or UPI ID - 828671007401@ippb to make payment.</dd>
+                <dt>Step 3:</dt>
+                <dd>Enter <b>&#8377 {{ order.get_total }} </b> (order total of your cart) in amount to be transfered.</dd>
+                <dt>Step 4:</dt>
+                <dd>After transaction is completed, Please enter name of payment sender in the respective box.</dd>
+              </dl>
+              <h5><u>Message</u> - After completing payment our customer service team contact you in next couple of hours.</h5>
+              <div class="md-form mb-2">
+                <label for="payment_sender_name" class="mt-1"><b>Sender Name :-</b></label>
+                {{ form.payment_sender_name }}
+              </div>
+            </div>
+          </div>
+          <hr class="mb-1">  
+          <button class="btn btn-primary btn-block" type="submit">Payment</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-lg-12 mt-2">
+      <h4 class="d-flex justify-content-between align-content-center mb-3">
+        <span class="text-muted mt-4">Your Cart</span>
+        <span class="badge badge-secondary badge-pill mt-4">{{ order.products.count }}</span>
+      </h4>
+      <ul class="list-group mb-3">
+        {% for order_item in order.products.all %}
+        <li class="list-group-item d-flex justify-content-between lh-condenced">
+          <div>
+            <h6 class="my-0">{{ order_item.product.product_title }}</h6>
+            <small class="text-muted">Quantity :- {{ order_item.get_total_quantity }}</small>
+          </div>
+          
+            {% if order_item.product.product_discount_price %}
+            <span class="text-muted"></span>&#8377 {{ order_item.get_total_cart_discount_price }}</span>
+            {% else %}
+            <span class="text-muted"></span>&#8377 {{ order_item.get_total_cart_price }}</span>
+            {% endif %}
+        </li>
+        {% endfor %}
+        
+        <li class="list-group-item d-flex justify-content-between lh-condenced">
+          <div>
+            <h6 class="my-0">Total :</h6>
+            <small class="text-muted"></small>
+          </div>
+          <span class="text-bold">&#8377 {{ order.get_total }}</span>
+        </li>
+      </ul>
+
+
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

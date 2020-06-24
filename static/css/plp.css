@@ -1,0 +1,80 @@
+.container {
+    margin-top: 10px;
+}
+
+.newarrival {
+    background: green;
+    width: 50px;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding-top: 1px;
+}
+
+.col-md-7 h2 {
+    color: #555;
+}
+
+.price {
+    color: black;
+    font-size: 25px;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+input {
+    border: 1px solid #ccc;
+    font-weight: bold;
+    text-align: center;
+    height: 33px;
+    width: 40px;
+}
+
+.quantity {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.note {
+    font-family: sans-serif;   
+}
+
+.col-md-7 #cart-btn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.col-md-7 #bn-btn {
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    height: 100px;
+    width: 100px;
+    outline: black;
+    background-size: 50%, 50%;
+    border-radius: 50%;
+    border: 1px solid black;
+    background-image: none;
+}
+
+.carousel-control-next-icon:after {
+    content: '>';
+    font-size: 55px;
+    color: red;
+}
+
+.carousel-control-prev-icon:after {
+    content: '<';
+    font-size: 55px;
+    color: red;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

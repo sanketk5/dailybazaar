@@ -1,0 +1,64 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Product Card</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
+</head>
+{% include 'navbar.html' %}
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            {% for product in products %}
+            <div class="col">
+                <div class="product" data-aos="fade-left">
+                    <div class="imgbox">
+                        <img src="{{ product.product_image1.url }}" alt="Wheat bread photo">
+                    </div>
+
+                    <div class="specifice">
+                        <h2> {{ product.product_title }} <br><span>By {{ product.product_brand }}</span></h2>
+                        <div class="price">
+                            {% if product.product_discount_price %} &#8377 {{ product.product_discount_price }}
+                            {% else %}
+                            &#8377 {{ product.product_price }} {% endif %}
+                        </div>
+                        <a href="{{ product.get_absolute_url }}" class="stretched-link"></a>
+                        <div class="btns">
+                            <a href="#" id="cart-btn" class="btn btn-outline-primary">Add To Cart</a>
+                            <a href="#" id="bn-btn" class="btn btn-outline-success">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--Scrolling animation JS-->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 200,
+            duration: 700,
+            once: true
+        });
+    </script>
+
+</body>
+
+</html>
