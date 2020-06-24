@@ -87,7 +87,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'dailybazaar',
         'USER': 'postgres',
-        'PASSWORD': 'S@nketp3003',
+        'PASSWORD': 'password',
         'HOST': 'localhost',
     }
 }
